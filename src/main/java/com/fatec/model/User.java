@@ -1,5 +1,8 @@
-package com.fatec.entity;
+package com.fatec.model;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,10 +17,14 @@ public class User {
     @Id
     private String id;
 
-    @Indexed
-    private String username;
+    @NotBlank(message = "O atributo Nome é obrigatório.")
+    private String nome;
 
-    private String password;
+    @NotBlank(message = "O atributo email é obrigatório.")
+    @Email(message = "O atributo email deve ser um email válido.")
+    private String email;
 
-    private boolean active;
+    @NotBlank(message = "O atributo senha é obrigatório.")
+    @Size(min = 8)
+    private String senha;
 }
