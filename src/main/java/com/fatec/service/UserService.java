@@ -44,7 +44,7 @@ public class UserService {
 
         if(usuarioRepository.findById(usuario.getId()).isPresent()) {
 
-            Optional<User> buscaUsuario = usuarioRepository.findByEmail(usuario.getNome());
+            Optional<User> buscaUsuario = usuarioRepository.findByEmail(usuario.getNomeResponsavel());
 
             if ( (buscaUsuario.isPresent()) && ( buscaUsuario.get().getId() != usuario.getId()))
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Usuário já existe!", null);
@@ -77,7 +77,7 @@ public class UserService {
             if (usuario.isPresent()) {
                 // Preenche o Objeto usuarioLogin com os dados encontrados
                 usuarioLogin.get().setId(usuario.get().getId());
-                usuarioLogin.get().setNome(usuario.get().getNome());
+                usuarioLogin.get().setNomeResponsavel(usuario.get().getNomeResponsavel());
                 usuarioLogin.get().setToken(gerarToken(usuarioLogin.get().getEmail()));
                 usuarioLogin.get().setSenha("");
 

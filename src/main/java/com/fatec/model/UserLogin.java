@@ -7,7 +7,7 @@ import lombok.Data;
 @Builder
 public class UserLogin {
     private String id;
-    private String nome;
+    private String NomeResponsavel;
     private String email;
     private String senha;
     private String token;

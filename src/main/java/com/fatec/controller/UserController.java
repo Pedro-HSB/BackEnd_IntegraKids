@@ -33,7 +33,7 @@ public class UserController {
         return ResponseEntity.ok(usuarioRepository.findAll());
 
     }
-
+    //change because the model dont have the ID
     @GetMapping("/{id}")
     public ResponseEntity<User> getById(@PathVariable Long id) {
         return usuarioRepository.findById(String.valueOf(id))
@@ -60,10 +60,5 @@ public class UserController {
         return usuarioService.autenticarUser(usuarioLogin)
                 .map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
                 .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
-    }
-
-    @GetMapping("/test")
-    public ResponseEntity<String> greeting() {
-        return ResponseEntity.status(HttpStatus.OK).body("Hello World");
     }
 }

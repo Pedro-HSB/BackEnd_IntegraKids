@@ -17,8 +17,8 @@ public class User {
     @Id
     private String id;
 
-    @NotBlank(message = "O atributo Nome é obrigatório.")
-    private String nome;
+    @NotBlank(message = "O atributo Nome do Responsável é obrigatório.")
+    private String nomeResponsavel;
 
     @NotBlank(message = "O atributo email é obrigatório.")
     @Email(message = "O atributo email deve ser um email válido.")
